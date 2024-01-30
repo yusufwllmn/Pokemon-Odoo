@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/*" position="before">
+                    <header>
+                        <button string="Get Pokemon" type="object" class="oe_highlight" name="get_random_pokemon" invisible="not is_company"/>
+                    </header>    
+                </xpath>
+
+                <xpath expr="//form/sheet/notebook" posisition="inside">
+                    <page string="Pokémon Abilities">
+                        <group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
