@@ -21,6 +21,7 @@
         'views/res_partner.xml',
     ],
     
+    'installable': True, 
     'application': True,
     
     'demo': [

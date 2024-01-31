@@ -13,7 +13,11 @@
 
                 <xpath expr="//form/sheet/notebook" posisition="inside">
                     <page string="Pokémon Abilities">
-                        <group>
+                        <group string="POKEMON INFORMATION" >
+                            <field name="pokemon_id"></field>
+                            <field name="pokemon_name"></field>
+                        </group>
+                        <group string="ABILITIES" >
                         </group>
                     </page>
                 </xpath>
