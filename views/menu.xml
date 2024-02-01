@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <menuitem 
+            id="pokemon_menu_root" 
+            name="Pokemon" 
+            sequence="20"/>
+
+        <menuitem 
+            id="pokemon_menu_data" 
+            name="Pokemon Data" 
+            action="action_pokemon" 
+            parent="pokemon_menu_root" 
+            sequence="20"/>
+
+        <menuitem 
+            id="ability_menu_data" 
+            name="Ability Data" 
+            action="action_ability" 
+            parent="pokemon_menu_root" 
+            sequence="20"/>
+    </data>
+</odoo>

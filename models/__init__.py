@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from . import models
-from . import res_partner
 from . import pokemon
+from . import ability
+from . import res_partner

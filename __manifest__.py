@@ -19,6 +19,9 @@
         'security/ir.model.access.csv',
         
         'views/res_partner.xml',
+        'views/pokemon.xml',
+        'views/ability.xml',
+        'views/menu.xml',
     ],
     
     'installable': True, 

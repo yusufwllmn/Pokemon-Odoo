@@ -18,6 +18,7 @@
                             <field name="pokemon_name"></field>
                         </group>
                         <group string="ABILITIES" >
+                            <field name="pokemon_ability"></field>
                         </group>
                     </page>
                 </xpath>

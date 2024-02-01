@@ -9,18 +9,25 @@ class ResPartner(models.Model):
     
     pokemon_id = fields.Many2one(
         'pokemon',
-        string='Pokemon',
-        help='The Pokémon catched by Company',
+        string='Pokemon ID',
+        help='ID of the Pokémon catched with the company',
         readonly=True
     )
     
     pokemon_name = fields.Char(
         related='pokemon_id.pokemon_name',
-        string = 'Pokemon Name',
-        help=' Pokémon catched by Company'
+        string = 'Pokemon',
+        help='Name of the Pokémon catched with the company'
     )
     
-    def get_all_pokemon_id(self):
+    pokemon_ability = fields.Char(
+        related='pokemon_id.ability_id',
+        string = 'Ability',
+        help='Name of the Pokémon ability'
+    )
+    
+    
+    def get_random_pokemon_id(self):
         url = 'https://pokeapi.co/api/v2/pokemon?limit=10000'
         response = requests.get(url)
         
