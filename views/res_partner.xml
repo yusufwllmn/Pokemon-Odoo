@@ -19,6 +19,7 @@
                         </group>
                         <group string="ABILITIES" >
                             <field name="pokemon_ability"></field>
+                            <field name="ability_desc"></field>
                         </group>
                     </page>
                 </xpath>

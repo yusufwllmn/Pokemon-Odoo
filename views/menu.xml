@@ -8,16 +8,22 @@
 
         <menuitem 
             id="pokemon_menu_data" 
-            name="Pokemon Data" 
-            action="action_pokemon" 
+            name="Data" 
             parent="pokemon_menu_root" 
             sequence="20"/>
 
         <menuitem 
-            id="ability_menu_data" 
+            id="pokemon_menu" 
+            name="Pokemon Data" 
+            action="action_pokemon"
+            parent="pokemon_menu_data" 
+            sequence="20"/>
+
+        <menuitem 
+            id="ability_menu" 
             name="Ability Data" 
             action="action_ability" 
-            parent="pokemon_menu_root" 
+            parent="pokemon_menu_data" 
             sequence="20"/>
     </data>
 </odoo>

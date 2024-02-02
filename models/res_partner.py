@@ -20,30 +20,37 @@ class ResPartner(models.Model):
         help='Name of the Pokémon catched with the company'
     )
     
+    ability_id = fields.Many2one(
+        'ability',
+        string='Ability ID',
+        help='ID of the Pokémon ability catched with the company',
+        readonly=True
+    )
+    
     pokemon_ability = fields.Char(
-        related='pokemon_id.ability_id',
+        related='ability_id.ability',
         string = 'Ability',
         help='Name of the Pokémon ability'
     )
     
+    ability_desc = fields.Char(
+        related='ability_id.ability_info',
+        string = 'Ability Description',
+        help='Description of the Pokémon ability'
+    )
     
-    def get_random_pokemon_id(self):
-        url = 'https://pokeapi.co/api/v2/pokemon?limit=10000'
-        response = requests.get(url)
-        
-        if response.status_code == 200:
-            data = response.json()
-            all_pokemon_id = []
-
-            for pokemon in data['results']:
-                pokemon_url = pokemon['url']
-                pokemon_id = pokemon_url.split('/')[-2]
-                all_pokemon_id.append(int(pokemon_id))
-
-            return all_pokemon_id
+    def get_all_pokemon_id(self):
+        all_pokemon = self.env['pokemon'].search([])
+        all_pokemon_id = list([pokemon.name for pokemon in all_pokemon])
+        return all_pokemon_id
         
     def get_random_pokemon(self):
         all_pokemon_id = self.get_all_pokemon_id()
         random_pokemon_id = int(random.choice(all_pokemon_id))
-        self.pokemon_id = random_pokemon_id
+        pokemon = self.env['pokemon'].search([('id', '=', random_pokemon_id)], limit=1)
+        if pokemon:
+            self.pokemon_id = pokemon.id
+            ability = self.env['ability'].search([('id', '=', int(pokemon.ability_id))], limit=1)
+            if ability:
+                self.ability_id = ability
         

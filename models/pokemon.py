@@ -37,7 +37,7 @@ class pokemon(models.Model):
                 pokemon_id = pokemon_url.split('/')[-2]
                 all_pokemon_id.append(int(pokemon_id))
 
-            random_pokemon_id = random.sample(all_pokemon_id, 200)
+            random_pokemon_id = random.sample(all_pokemon_id, 120)
             return random_pokemon_id
     
     def get_pokemon(self):
