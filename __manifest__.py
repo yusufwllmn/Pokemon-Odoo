@@ -20,7 +20,6 @@
         
         'views/res_partner.xml',
         'views/pokemon.xml',
-        'views/ability.xml',
         'views/menu.xml',
     ],
     
@@ -31,4 +30,10 @@
         'demo/demo.xml',
     ],
 }
-
+    # def write(self, vals):
+    #     if 'is_company' in vals and not vals['is_company']:
+    #         vals['pokemon_id'] = None
+    #         vals['pokemon_name'] = None
+    #         vals['ability'] = None
+    #         vals['ability_info'] = None
+    #     return super(ResPartner, self).write(vals)

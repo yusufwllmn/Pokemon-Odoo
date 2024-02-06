@@ -6,9 +6,7 @@
             <field name="model">pokemon</field>
             <field name="arch" type="xml">
                 <form string="Pokemon">
-                    <header>
-                        <button name="get_pokemon" string="Get Pokemon" type="object" class="oe_highlight"/>
-                    </header>
+
                 </form>
             </field>
         </record>
@@ -20,7 +18,9 @@
                 <tree>
                     <field name="name"></field>
                     <field name="pokemon_name"></field>
-                    <field name="ability_id"></field>
+                    <field name="ability"></field>
+                    <field name="ability_info"></field>
+                    <field name="partner_name"></field>
                 </tree>
             </field>
         </record>
