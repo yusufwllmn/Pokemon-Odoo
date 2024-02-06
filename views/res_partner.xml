@@ -10,7 +10,6 @@
                         <button string="Get Pokemon" type="object" class="oe_highlight" name="get_random_pokemon" invisible="not is_company"/>
                     </header>    
                 </xpath>
-
                 <xpath expr="//form/sheet/notebook" posisition="inside">
                     <page string="Pokémon Abilities">
                         <group string="POKEMON INFORMATION" >

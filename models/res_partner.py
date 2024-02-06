@@ -11,7 +11,8 @@ class ResPartner(models.Model):
         'pokemon',
         string='Pokemon ID',
         help='ID of the Pokémon catched with the company',
-        readonly=True
+        readonly=True,
+        ondelete='set null'
     )
     
     pokemon_name = fields.Char(
@@ -24,7 +25,8 @@ class ResPartner(models.Model):
         'ability',
         string='Ability ID',
         help='ID of the Pokémon ability catched with the company',
-        readonly=True
+        readonly=True,
+        ondelete='set null'
     )
     
     pokemon_ability = fields.Char(
@@ -38,6 +40,12 @@ class ResPartner(models.Model):
         string = 'Ability Description',
         help='Description of the Pokémon ability'
     )
+    
+    def write(self, vals):
+        if 'is_company' in vals and not vals['is_company']:
+            vals['pokemon_id'] = None
+            vals['ability_id'] = None
+        return super(ResPartner, self).write(vals)
     
     def get_all_pokemon_id(self):
         all_pokemon = self.env['pokemon'].search([])
