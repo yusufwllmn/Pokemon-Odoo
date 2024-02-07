@@ -16,6 +16,7 @@
             <field name="model">pokemon</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="image" widget="image" options="{'size': [50, 50]}"></field>
                     <field name="name"></field>
                     <field name="pokemon_name"></field>
                     <field name="ability"></field>

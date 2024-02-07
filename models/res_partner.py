@@ -3,40 +3,48 @@
 from odoo import models, fields, api
 import requests
 import random
+import base64
+from io import BytesIO
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     
     pokemon_id = fields.Many2one(
         'pokemon', 
-        string='Pokemon ID',
-        help='Pokémon associated with Partner',
-        readonly=True,
-        ondelete='cascade'
+        string = 'Pokemon ID',
+        help = 'Pokémon associated with Partner',
+        readonly = True,
+        ondelete = 'cascade'
     )
     
     pokemon = fields.Char(
-        related='pokemon_id.name',
+        related = 'pokemon_id.name',
         string = 'ID Pokemon',
-        help='ID of the Pokémon associated with the company'
+        help = 'ID of the Pokémon associated with the company'
     ) 
     
     pokemon_name = fields.Char(
-        related='pokemon_id.pokemon_name',
+        related = 'pokemon_id.pokemon_name',
         string = 'Pokemon',
-        help='Name of the Pokémon associated with the company'
+        help = 'Name of the Pokémon associated with the company'
     )
     
     ability = fields.Char(
-        related='pokemon_id.ability',
+        related = 'pokemon_id.ability',
         string = 'Ability',
-        help='Name of the Pokémon ability'
+        help = 'Name of the Pokémon ability'
     )
     
     ability_info = fields.Char(
-        related='pokemon_id.ability_info',
+        related = 'pokemon_id.ability_info',
         string = 'Ability Description',
-        help='Description of the Pokémon ability'
+        help = 'Description of the Pokémon ability'
+    )
+    
+    image = fields.Binary(
+        related = 'pokemon_id.image',
+        string = 'Avatar',
+        help = 'Avatar of The Pokémon'
     )
     
     def write(self, vals):
@@ -72,6 +80,9 @@ class ResPartner(models.Model):
             data = response.json()
             pokemon_id = data['id']
             pokemon_name = data['name']
+            image_url = data['sprites']['front_default']
+            response = requests.get(image_url)
+            image = base64.b64encode(BytesIO(response.content).read())
             ability_url = data['abilities'][0].get('ability',{}).get('url')
             response = requests.get(ability_url)
             
@@ -95,6 +106,7 @@ class ResPartner(models.Model):
                     'pokemon_name' : pokemon_name,
                     'ability' : ability,
                     'ability_info' : ability_info,
+                    'image' : image
                 })
 
                 self.pokemon_id = pokemon.id
