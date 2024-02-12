@@ -11,7 +11,7 @@
                     </header>    
                 </xpath>
                 <xpath expr="//form/sheet/notebook" posisition="inside">
-                    <page string="Pokémon Abilities">
+                    <page string="Pokémon">
                         <field name="image" widget="image" class="oe_avatar"/>
                         <group string="POKEMON INFORMATION" >
                             <field name="pokemon_id"></field>

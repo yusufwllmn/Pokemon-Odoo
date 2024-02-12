@@ -55,6 +55,14 @@ class ResPartner(models.Model):
                 old_pokemon.unlink()
         return super(ResPartner, self).write(vals)
     
+    def unlink(self):
+        for record in self:
+            if record.pokemon_id:
+                old_pokemon = record.pokemon_id
+                record.pokemon_id = None
+                old_pokemon.unlink()
+        return super(ResPartner, self).unlink()
+    
     def get_all_pokemon_id(self):
         url = 'https://pokeapi.co/api/v2/pokemon?limit=10000'
         response = requests.get(url)
