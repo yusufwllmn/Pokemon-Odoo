@@ -21,7 +21,7 @@ class ResPartner(models.Model):
         related = 'pokemon_id.name',
         string = 'ID Pokemon',
         help = 'ID of the Pokémon associated with the company'
-    ) 
+    )
     
     pokemon_name = fields.Char(
         related = 'pokemon_id.pokemon_name',
@@ -103,7 +103,7 @@ class ResPartner(models.Model):
                     if entry['language']['name'] == 'en':
                         ability_info = entry['effect']
                         break
-                
+                 
                 if self.pokemon_id:
                     old_pokemon = self.pokemon_id
                     self.pokemon_id = None

@@ -4,6 +4,7 @@
         <menuitem 
             id="pokemon_menu_root" 
             name="Pokemon" 
+            web_icon="custom_inherit,static/description/icon.png"
             sequence="20"/>
 
         <menuitem 

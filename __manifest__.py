@@ -13,6 +13,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
     
+    'images': ['static/description/icon.png'],
     'depends': ['base','contacts'],
 
     'data': [
@@ -30,10 +31,3 @@
         'demo/demo.xml',
     ],
 }
-    # def write(self, vals):
-    #     if 'is_company' in vals and not vals['is_company']:
-    #         vals['pokemon_id'] = None
-    #         vals['pokemon_name'] = None
-    #         vals['ability'] = None
-    #         vals['ability_info'] = None
-    #     return super(ResPartner, self).write(vals)
